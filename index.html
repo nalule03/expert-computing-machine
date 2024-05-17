@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melodia App</title>
+  <audio src="musics" id="musics" loop autoplay></audio>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+  <div class="container">
+    <br>
+    <div class="music-player">
+      <nav>
+        <div class="circle"><i class="fa fa-heart-o" title="like"></i></div>
+        <div class="now_playing"></div>
+        <div class="circle"><i class="fa fa-bars"></i></div>
+      </nav>
+      
+      <div class="wraper">
+        <div>
+        <div class="volume-control"> 
+          <input type="range" min="0" max="1" class="slider_container" step="0.01" id="volume_slider" />
+        </div>
+    
+        <div class="rotate">
+          <img src="/images/image2.jpg" class="image-song"/>
+        </div>
+        <div class="details">
+          <div class="track_art"></div>
+          <div class="track_name">Track Name</div>
+          <div class="track_artist">Track Artist</div>
+        </div>
+      </div>
+      
+     
+      <div class="slider_container">
+        <div class="Current-time">00:00</div>
+        <input type="range" min="1" max="100" class="seek_slider" value="0" onchange="seekTo()"/>
+        <div class="total-duration">00:00</div>
+      </div>
+    
+      <div class="buttons">
+
+        <div class="one" onclick="repeatTrack()">
+          <i class="fa fa-repeat" title="repeat"></i>
+        </div>
+        
+        <div class="two" onclick="prevTrack()"> 
+          <i class="fa fa-fast-backward" title="back"></i>
+        </div>
+
+        <div class="ctrlIcon" onclick="playPause()">
+          <i class="fa fa-play-circle" title="PlayPause"></i>
+        </div>
+
+        <div class="four" onclick="nextTrack()"> 
+        <i class="fa fa-fast-forward" title="Next"></i>
+        </div>
+
+        <div class="five" onclick="random()">
+          <i class="fa fa-random" title="shuffle"></i>
+        </div>
+
+      </div>
+    
+      <div id="wave">
+        <span class="stroke"></span>
+        <span class="stroke"></span>
+        <span class="stroke"></span>
+        <span class="stroke"></span>
+        <span class="stroke"></span>
+        <span class="stroke"></span>
+        <span class="stroke"></span>
+        <span class="stroke"></span>
+      </div>
+    </div>
+    </div>
+   
+  </div>
+
+
+  <script src="muscic.js"></script>
+  <script src="script.js"></script>
+
+
+<!--<script>
+// Specify globally used values
+ track_index = 0,
+ isPlaying = false,
+ updateTimer,
+
+// Create the audio element for the player
+ audio = document.createElement("audio");
+
+function playPause(){
+  let music = document.getElementById("musics");
+  if (music.paused) {
+    music.play();
+    document.getElementById("ctrlIcon").innerHTML = "<i class='fa fa-pause-circle' title='Pause'></i>";
+  } else {
+    music.pause();
+    document.getElementById("ctrlIcon").innerHTML = "<i class='fa fa-play-circle' title='Play'></i>";
+  }
+}
+
+function loadTrack(track_index) {
+    // Clear the previous seek timer
+    clearInterval(updateTimer);
+    resetValues();
+   
+    // Load a new track
+    curr_track.src = track_list[track_index].path;
+    curr_track.load();
+   
+    // Update details of the track
+    track_art.style.backgroundImage = 
+       "url(" + track_list[track_index].image + ")";
+    track_name.textContent = track_list[track_index].name;
+    track_artist.textContent = track_list[track_index].artist;
+    now_playing.textContent = 
+       "PLAYING " + (track_index + 1) + " OF " + track_list.length;
+   
+    // Set an interval of 1000 milliseconds
+    // for updating the seek slider
+    updateTimer = setInterval(seekUpdate, 1000);
+   
+    // Move to the next track if the current finishes playing
+    // using the 'ended' event
+    curr_track.addEventListener("ended", nextTrack);
+   
+    // Apply a random background color
+    random_bg_color();
+  }
+   
+  function random_bg_color() {
+    // Get a random number between 64 to 256
+    // (for getting lighter colors)
+    let red = Math.floor(Math.random() * 256) + 64;
+    let green = Math.floor(Math.random() * 256) + 64;
+    let blue = Math.floor(Math.random() * 256) + 64;
+   
+    // Construct a color with the given values
+    let bgColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+   
+    // Set the background to the new color
+    document.body.style.background = bgColor;
+  }
+ </script>-->
+</body>
+</html>
+
